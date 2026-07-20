@@ -41,7 +41,7 @@ flowchart LR
 
 ## Установка
 ```bash
-git clone https://github.com/7ladde7/repo/ml-rag-chatbot
+git clone https://github.com/7ladde7/ml-rag-chatbot.git
 cd ml-rag-chatbot
 ```
 
