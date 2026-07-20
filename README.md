@@ -7,7 +7,7 @@
 </p>
 
 ## Архитектура
-**Основной стэк:** Python, LangChain, FAISS, RAGAS, OpenChat, Docker
+**Основной стэк:** Python, LangChain, FAISS, RAGAS, Agent Chat UI, Docker
 
 ```mermaid
 flowchart LR
