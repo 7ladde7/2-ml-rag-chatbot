@@ -1,0 +1,20 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    working_dir: /backend
+    environment:
+      - LANGSMITH_TRACING_V2=${LANGSMITH_TRACING_V2}
+      - LANGSMITH_TRACING=${LANGSMITH_TRACING}
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+    ports:
+      - "2024:2024"
+
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    working_dir: /ui
+    ports:
+      - "3000:3000"
