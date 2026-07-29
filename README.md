@@ -41,8 +41,8 @@ flowchart LR
 
 ## Установка
 ```bash
-git clone https://github.com/7ladde7/ml-rag-chatbot.git
-cd ml-rag-chatbot
+git clone https://github.com/7ladde7/2-ml-rag-chatbot.git
+cd 2-ml-rag-chatbot
 ```
 
 Переименуйте файл ```.env.sample``` в  ```.env```, задав в нем переменную ```OPENROUTER_API_KEY```.
