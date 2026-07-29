@@ -3,7 +3,7 @@
     "."
   ],
   "graphs": {
-    "agent": "./chatbot_agent_instance.py:agent"
+    "agent": "./app/instance.py:agent"
   },
   "env": ".env"
 }

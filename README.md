@@ -7,7 +7,7 @@
 </p>
 
 ## Архитектура
-**Основной стэк:** Python, LangChain, FAISS, RAGAS, Agent Chat UI, Docker
+**Основной стэк:** Python, LangChain/LangGraph, FAISS, RAGAS, Agent Chat UI, Docker
 
 ```mermaid
 flowchart LR
@@ -33,11 +33,7 @@ flowchart LR
     H --> C
 ```
 
-В чат-боте спользуется LangChain-агент c двумя тулами:
-1. Скачивание документа с последующим гибридным поиском (**Hybrid Retrieval**: **BM25** + **FAISS embeddings** + **Reranker**)
-2. Проверка релевантности полученного контекста
-
-В качестве **LLM** используется **gpt-5.4-mini**, эмбеддинги получаем через **bge-large-en-v1.5** (лучше всего использовать англоязычные документы), а в роли **Reranker** кросс-энкодер **ms-marco-MiniLM-L-6-v2**.
+В чат-боте спользуется LangGraph-агент (`backend/agent.py:get_rag_agent`), под капотом использующий граф выполнения (nodes) и промежуточное состояние (state) для ответа пользователю. В качестве **LLM** используется **gpt-5.4-mini**, эмбеддинги получаем через **bge-large-en-v1.5** (лучше всего использовать англоязычные документы), а в роли **Reranker** кросс-энкодер **ms-marco-MiniLM-L-6-v2**.
 
 ## Установка
 ```bash
@@ -50,15 +46,18 @@ cd 2-ml-rag-chatbot
 Запуск в **Docker**:
 ```bash
 docker compose up --build
-
-# метрики (backend)
-python -m evals
 ```
+
 Открыть чат в браузере: [http://localhost:3000](http://localhost:3000)
 
 ## Метрики
 
 Для сравнения с гибридным поиском (**Hybrid Retrieval**) в роли бейзлайна используется агент с **BM25** поиском. Метрики снимаются с помощью **RAGAS**.
+
+```bash
+# в backend-контейнере
+python -m app.evals
+```
 
 Ключевые результаты:
 | Тип | Context Recall | Context Precision | Faithfulness |

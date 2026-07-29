@@ -16,11 +16,11 @@ embeddings = HuggingFaceEmbeddings(
 )
 
 def get_doc_chunks_by_url(doc_url):
-    os.makedirs("assets", exist_ok=True)
+    os.makedirs("../assets", exist_ok=True)
 
     # кэш
     cache_path = os.path.join(
-        "assets",
+        "../assets",
         f"{md5(doc_url.encode('utf-8')).hexdigest()}.pdf"
     )
 

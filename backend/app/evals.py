@@ -9,9 +9,9 @@ from ragas.metrics import (
     faithfulness,
     answer_relevancy
 )
-from .baseline import get_baseline_rag_agent
-from .agent import get_rag_agent
-from .utils import (
+from app.baseline import get_baseline_rag_agent
+from app.agent import get_rag_agent
+from app.utils import (
     get_doc_chunks_by_url,
     llm,
     embeddings,
@@ -71,7 +71,6 @@ Link: {doc_url}
                 parsed = json.loads(msg.content)
                 if isinstance(parsed, list):
                     retrieved_contexts = parsed
-
 
         data["user_input"].append(question)
         data["response"].append(answer)
